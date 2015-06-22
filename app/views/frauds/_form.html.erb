@@ -1,0 +1,29 @@
+<%= form_for(@fraud) do |f| %>
+  <% if @fraud.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@fraud.errors.count, "error") %> prohibited this fraud from being saved:</h2>
+
+      <ul>
+      <% @fraud.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.fields_for :images, Image.new do |ff| %>
+      <%= ff.label :image, "Upload Evidence", class: 'control-label' %>
+      <div class="controls">
+        <%= ff.file_field :image, multiple: true, class: 'btn btn-file', id: 'upload-image', name: "fraud[images_attributes][][image]" %>
+      </div>
+    <% end %>
+  </div>
+  <div class="actions" id: 'submit-data'>
+    <%= f.submit %>
+  </div>
+<% end %>

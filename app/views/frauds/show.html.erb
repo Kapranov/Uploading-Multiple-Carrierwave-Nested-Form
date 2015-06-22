@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @fraud.name %>
+</p>
+
+<p>
+  <% @images.each do |p| %>
+    <%= image_tag p.image_url(:thumb).to_s if p.image_url.present? %>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_fraud_path(@fraud) %> |
+<%= link_to 'Back', frauds_path %>

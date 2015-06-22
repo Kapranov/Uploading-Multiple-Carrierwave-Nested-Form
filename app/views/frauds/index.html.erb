@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Frauds</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @frauds.each do |fraud| %>
+      <tr>
+        <td><%= fraud.name %></td>
+        <td><%= link_to 'Show', fraud %></td>
+        <td><%= link_to 'Edit', edit_fraud_path(fraud) %></td>
+        <td><%= link_to 'Destroy', fraud, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Fraud', new_fraud_path %>
